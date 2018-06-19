@@ -10,6 +10,7 @@
 		CC00E41320D8884600025A4D /* DFSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC00E40920D8884500025A4D /* DFSKit.framework */; };
 		CC00E41820D8884600025A4D /* DFSKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E41720D8884600025A4D /* DFSKitTests.swift */; };
 		CC00E41A20D8884600025A4D /* DFSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC00E40C20D8884500025A4D /* DFSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC00E42420D8887B00025A4D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E42320D8887B00025A4D /* Maze.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		CC00E41220D8884600025A4D /* DFSKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DFSKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC00E41720D8884600025A4D /* DFSKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFSKitTests.swift; sourceTree = "<group>"; };
 		CC00E41920D8884600025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC00E42320D8887B00025A4D /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				CC00E40C20D8884500025A4D /* DFSKit.h */,
+				CC00E42320D8887B00025A4D /* Maze.swift */,
 				CC00E40D20D8884500025A4D /* Info.plist */,
 			);
 			path = DFSKit;
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					CC00E40820D8884500025A4D = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					CC00E41120D8884600025A4D = {
 						CreatedOnToolsVersion = 10.0;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC00E42420D8887B00025A4D /* Maze.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +344,7 @@
 		CC00E41E20D8884600025A4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -356,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.DFSKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +371,7 @@
 		CC00E41F20D8884600025A4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -389,6 +397,7 @@
 		CC00E42120D8884600025A4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
 				INFOPLIST_FILE = DFSKitTests/Info.plist;
@@ -407,6 +416,7 @@
 		CC00E42220D8884600025A4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
 				INFOPLIST_FILE = DFSKitTests/Info.plist;
