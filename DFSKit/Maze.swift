@@ -15,7 +15,7 @@ public struct Maze {
 	///
 	/// - passable: The space can be passed through in the game world (path).
 	/// - impassable: The space cannot be passed through (wall).
-	enum Space {
+	public enum Space {
 		case passable
 		case impassable
 	}
@@ -34,7 +34,7 @@ public struct Maze {
 	///
 	/// - Warning: Both `rows` and `columns` must be odd. If
 	/// 					 the values passed in are even, they will be incremented.
-	init(width columns: Int, height rows: Int) {
+	public init(width columns: Int, height rows: Int) {
 		self.rows = rows % 2 != 0 ? rows : rows + 1
 		self.columns = columns % 2 != 0 ? columns : columns + 1
 		self.grid = Array(repeating: Array(repeating: .impassable,
@@ -46,12 +46,12 @@ public struct Maze {
 	/// double bracket style subscript syntax.
 	///
 	/// - Parameter row: The row index.
-	subscript(row: Int, column: Int) -> Space {
+	public subscript(row: Int, column: Int) -> Space {
 		assert(inBounds(row, column), "Index out of bounds")
 		return grid[row][column]
 	}
 
-	subscript(row: Int) -> [Space] {
+	private subscript(row: Int) -> [Space] {
 		assert(inBounds(row, 0), "Index out of bounds")
 		return grid[row]
 	}
