@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import DFSKit
+@testable import MazeKit
 
-class DFSKitTests: XCTestCase {
+class MazeKitTests: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
@@ -36,7 +36,16 @@ class DFSKitTests: XCTestCase {
 	}
 
 	func testString() {
-		let maze = Maze(width: 25, height: 9)
+		var maze = Maze(width: 25, height: 9)
+		print(maze)
+		maze = Maze(width: 5, height: 5)
+		print(maze)
+	}
+
+
+	func testGenerate() {
+		var maze = Maze(width: 25, height: 25)
+		try! maze.generate(start: MazePoint(row: 0, column: 0))
 		print(maze)
 	}
 

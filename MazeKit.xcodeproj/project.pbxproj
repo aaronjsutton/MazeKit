@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC00E41320D8884600025A4D /* DFSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC00E40920D8884500025A4D /* DFSKit.framework */; };
-		CC00E41820D8884600025A4D /* DFSKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E41720D8884600025A4D /* DFSKitTests.swift */; };
-		CC00E41A20D8884600025A4D /* DFSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC00E40C20D8884500025A4D /* DFSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC00E41320D8884600025A4D /* MazeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC00E40920D8884500025A4D /* MazeKit.framework */; };
+		CC00E41820D8884600025A4D /* MazeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E41720D8884600025A4D /* MazeKitTests.swift */; };
+		CC00E41A20D8884600025A4D /* MazeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC00E40C20D8884500025A4D /* MazeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC00E42420D8887B00025A4D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E42320D8887B00025A4D /* Maze.swift */; };
+		CC7FCB5820D9684100843C58 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7FCB5720D9684100843C58 /* Generator.swift */; };
+		CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,13 +26,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC00E40920D8884500025A4D /* DFSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DFSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC00E40C20D8884500025A4D /* DFSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFSKit.h; sourceTree = "<group>"; };
+		CC00E40920D8884500025A4D /* MazeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MazeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC00E40C20D8884500025A4D /* MazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeKit.h; sourceTree = "<group>"; };
 		CC00E40D20D8884500025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC00E41220D8884600025A4D /* DFSKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DFSKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC00E41720D8884600025A4D /* DFSKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFSKitTests.swift; sourceTree = "<group>"; };
+		CC00E41220D8884600025A4D /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC00E41720D8884600025A4D /* MazeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeKitTests.swift; sourceTree = "<group>"; };
 		CC00E41920D8884600025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC00E42320D8887B00025A4D /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
+		CC7FCB5720D9684100843C58 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC00E41320D8884600025A4D /* DFSKit.framework in Frameworks */,
+				CC00E41320D8884600025A4D /* MazeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +59,8 @@
 		CC00E3FF20D8884500025A4D = {
 			isa = PBXGroup;
 			children = (
-				CC00E40B20D8884500025A4D /* DFSKit */,
-				CC00E41620D8884600025A4D /* DFSKitTests */,
+				CC00E40B20D8884500025A4D /* MazeKit */,
+				CC00E41620D8884600025A4D /* Unit Tests */,
 				CC00E40A20D8884500025A4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,29 +68,31 @@
 		CC00E40A20D8884500025A4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CC00E40920D8884500025A4D /* DFSKit.framework */,
-				CC00E41220D8884600025A4D /* DFSKitTests.xctest */,
+				CC00E40920D8884500025A4D /* MazeKit.framework */,
+				CC00E41220D8884600025A4D /* Unit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CC00E40B20D8884500025A4D /* DFSKit */ = {
+		CC00E40B20D8884500025A4D /* MazeKit */ = {
 			isa = PBXGroup;
 			children = (
-				CC00E40C20D8884500025A4D /* DFSKit.h */,
+				CC00E40C20D8884500025A4D /* MazeKit.h */,
 				CC00E42320D8887B00025A4D /* Maze.swift */,
+				CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */,
+				CC7FCB5720D9684100843C58 /* Generator.swift */,
 				CC00E40D20D8884500025A4D /* Info.plist */,
 			);
-			path = DFSKit;
+			path = MazeKit;
 			sourceTree = "<group>";
 		};
-		CC00E41620D8884600025A4D /* DFSKitTests */ = {
+		CC00E41620D8884600025A4D /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CC00E41720D8884600025A4D /* DFSKitTests.swift */,
+				CC00E41720D8884600025A4D /* MazeKitTests.swift */,
 				CC00E41920D8884600025A4D /* Info.plist */,
 			);
-			path = DFSKitTests;
+			path = "Unit Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,34 +102,35 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC00E41A20D8884600025A4D /* DFSKit.h in Headers */,
+				CC00E41A20D8884600025A4D /* MazeKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CC00E40820D8884500025A4D /* DFSKit */ = {
+		CC00E40820D8884500025A4D /* MazeKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC00E41D20D8884600025A4D /* Build configuration list for PBXNativeTarget "DFSKit" */;
+			buildConfigurationList = CC00E41D20D8884600025A4D /* Build configuration list for PBXNativeTarget "MazeKit" */;
 			buildPhases = (
 				CC00E40420D8884500025A4D /* Headers */,
 				CC00E40520D8884500025A4D /* Sources */,
 				CC00E40620D8884500025A4D /* Frameworks */,
 				CC00E40720D8884500025A4D /* Resources */,
+				CCBE0DE420DC1E1000DA99E5 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DFSKit;
+			name = MazeKit;
 			productName = DFSKit;
-			productReference = CC00E40920D8884500025A4D /* DFSKit.framework */;
+			productReference = CC00E40920D8884500025A4D /* MazeKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CC00E41120D8884600025A4D /* DFSKitTests */ = {
+		CC00E41120D8884600025A4D /* Unit Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "DFSKitTests" */;
+			buildConfigurationList = CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "Unit Tests" */;
 			buildPhases = (
 				CC00E40E20D8884600025A4D /* Sources */,
 				CC00E40F20D8884600025A4D /* Frameworks */,
@@ -134,9 +141,9 @@
 			dependencies = (
 				CC00E41520D8884600025A4D /* PBXTargetDependency */,
 			);
-			name = DFSKitTests;
+			name = "Unit Tests";
 			productName = DFSKitTests;
-			productReference = CC00E41220D8884600025A4D /* DFSKitTests.xctest */;
+			productReference = CC00E41220D8884600025A4D /* Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -158,7 +165,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CC00E40320D8884500025A4D /* Build configuration list for PBXProject "DFSKit" */;
+			buildConfigurationList = CC00E40320D8884500025A4D /* Build configuration list for PBXProject "MazeKit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -170,8 +177,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CC00E40820D8884500025A4D /* DFSKit */,
-				CC00E41120D8884600025A4D /* DFSKitTests */,
+				CC00E40820D8884500025A4D /* MazeKit */,
+				CC00E41120D8884600025A4D /* Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,12 +200,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CCBE0DE420DC1E1000DA99E5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:|WARNING:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"| perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC00E40520D8884500025A4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */,
 				CC00E42420D8887B00025A4D /* Maze.swift in Sources */,
+				CC7FCB5820D9684100843C58 /* Generator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC00E41820D8884600025A4D /* DFSKitTests.swift in Sources */,
+				CC00E41820D8884600025A4D /* MazeKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +244,7 @@
 /* Begin PBXTargetDependency section */
 		CC00E41520D8884600025A4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CC00E40820D8884500025A4D /* DFSKit */;
+			target = CC00E40820D8884500025A4D /* MazeKit */;
 			targetProxy = CC00E41420D8884600025A4D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -352,14 +381,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DFSKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MazeKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.DFSKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.MazeKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -379,14 +408,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DFSKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MazeKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.DFSKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.MazeKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -400,7 +429,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = DFSKitTests/Info.plist;
+				INFOPLIST_FILE = "Unit Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -419,7 +448,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = DFSKitTests/Info.plist;
+				INFOPLIST_FILE = "Unit Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,7 +464,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CC00E40320D8884500025A4D /* Build configuration list for PBXProject "DFSKit" */ = {
+		CC00E40320D8884500025A4D /* Build configuration list for PBXProject "MazeKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC00E41B20D8884600025A4D /* Debug */,
@@ -444,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC00E41D20D8884600025A4D /* Build configuration list for PBXNativeTarget "DFSKit" */ = {
+		CC00E41D20D8884600025A4D /* Build configuration list for PBXNativeTarget "MazeKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC00E41E20D8884600025A4D /* Debug */,
@@ -453,7 +482,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "DFSKitTests" */ = {
+		CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC00E42120D8884600025A4D /* Debug */,

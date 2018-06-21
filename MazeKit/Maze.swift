@@ -1,6 +1,6 @@
 //
 //  Maze.swift
-//  DFSKit
+//  MazeKit
 //
 //  Created by Aaron Sutton on 6/18/18.
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
@@ -10,7 +10,7 @@ import Foundation
 
 /// A structure that represents the underlying data for a grid based maze.
 public struct Maze {
-
+	
 	/// Represents the two states of a maze space.
 	///
 	/// - passable: The space can be passed through in the game world (path).
@@ -19,13 +19,21 @@ public struct Maze {
 		case passable
 		case impassable
 	}
-
-	/// The number of rows in the maze grid
-	public var rows: Int
-	/// The number of columns in the maze grid
+	
+	/// True if the maze has undergone generation.
+	public var isGenerated: Bool = false
+	/// The number of columns in the maze grid.
 	public var columns: Int
-	private var grid: [[Space]]
-
+	/// The number of rows in the maze grid.
+	public var rows: Int
+	
+	/// The total number of spaces in the maze.
+	public var spaces: Int {
+		return rows * columns
+	}
+	
+	internal var grid: [[Space]]
+	
 	/// Create a new maze, ungenerated.
 	///
 	/// - Parameters:
@@ -41,7 +49,23 @@ public struct Maze {
 																			 count: columns),
 											count: rows)
 	}
-
+	
+	/// Generates a maze in-place.
+	public mutating func generate(start point: MazePoint) throws {
+		let generator = Generator(self, start: point)
+		try generator.generate(point)
+	}
+	
+	/// Returns a generated copy of this maze.
+	///
+	/// - Returns: The generated maze.
+	//	public func generated(start: (Int, Int)) throws -> Maze {
+	//		let point = Point(row: start.0, column: start.1)
+	//		var copy = Maze(width: columns, height: rows)
+	//		try Generator.generate(maze: &copy, point)
+	//		return copy
+	//	}
+	
 	/// Returns a row of spaces. This allows for
 	/// double bracket style subscript syntax.
 	///
@@ -50,16 +74,31 @@ public struct Maze {
 		assert(inBounds(row, column), "Index out of bounds")
 		return grid[row][column]
 	}
-
+	
+	internal subscript(point: MazePoint) -> Space {
+		get {
+			return self[point.row, point.column]
+		}
+		set {
+			self.grid[point.row][point.column] = newValue
+		}
+	}
+	
 	private subscript(row: Int) -> [Space] {
 		assert(inBounds(row, 0), "Index out of bounds")
 		return grid[row]
 	}
-
-	private func inBounds(_ row: Int, _ column: Int) -> Bool {
+	
+	/// Determines if a point is within the bounds of the maze.
+	///
+	/// - Parameters:
+	///   - row: Row of the point.
+	///   - column: Column of the point
+	/// - Returns: True if in bounds, false if not.
+	internal func inBounds(_ row: Int, _ column: Int) -> Bool {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
-
+	
 }
 
 // MARK: - CustomStringConvertible
@@ -68,15 +107,15 @@ extension Maze: CustomStringConvertible {
 	public var description: String {
 		let border = String(repeatElement("━", count: columns * 2))
 		var box = "┏\(border)┓\n"
-
+		
 		for row in 0...rows - 1 {
 			box += "┃"
 			for space in self[row] {
-				box += space == .passable ? "  " : "██"
+				box += space == .passable ? "00" : "██"
 			}
 			box += ("┃\n")
 		}
-
+		
 		box += "┗\(border)┛\n"
 		return box
 	}

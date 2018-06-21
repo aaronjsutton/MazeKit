@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:DFSKit.xcodeproj">
+      location = "self:/Users/aaronsutton/Documents/Code/Swift/DFSKit/MazeKit.xcodeproj">
    </FileRef>
 </Workspace>
