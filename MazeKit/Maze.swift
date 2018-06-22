@@ -100,19 +100,23 @@ public struct Maze {
 	}
 
 	func canMove(point: MazePoint, in direction: Generator.Direction) -> Bool {
-		let destination = point.offsetting(in: direction, by: Generator.step)
+		var destination = point.offsetting(in: direction, by: Generator.step)
 		guard inBounds(destination.row, destination.column) else {
 			return false
 		}
-		let ahead = self[destination] != .passable &&
+		var ahead = self[destination] != .passable &&
 			self[destination.offsetting(in: direction, by: -1)] != .passable
+		destination.offset(in: direction, by: 1)
+		if inBounds(destination.row, destination.column) {
+			ahead = ahead && self[destination] == .impassable
+		}
 		let opposites = Generator.oppositeDirections(in: direction)
 		let walls = [point.offsetting(in: opposites.0, by: 1),
 								 point.offsetting(in: opposites.1, by: 1)]
 
 		var wallsClear: Bool = true
 		for point in walls where inBounds(point.row, point.column) {
-			wallsClear = self[point.offsetting(in: direction, by: 1)] == .impassable &&
+			wallsClear = wallsClear && self[point.offsetting(in: direction, by: 1)] == .impassable &&
 									self[point.offsetting(in: direction, by: 2)] == .impassable
 		}
 		return ahead && wallsClear

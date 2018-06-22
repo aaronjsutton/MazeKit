@@ -79,7 +79,7 @@ internal class Generator {
 	///
 	/// - Returns: A direction.
 	private func randomDirection() -> Direction {
-		return Direction(rawValue: arc4random_uniform(4))!
+		return Direction(rawValue: UInt32.random(in: 0...3))!
 	}
 
 	static func oppositeDirections(in direction: Direction) -> (Direction, Direction) {
