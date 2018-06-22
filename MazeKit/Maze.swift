@@ -52,8 +52,8 @@ public struct Maze {
 	
 	/// Generates a maze in-place.
 	public mutating func generate(start point: MazePoint) throws {
-		let generator = Generator(self, start: point)
-		try generator.generate(point)
+		let generator = Generator(start: point)
+		try generator.generate(point, &self)
 	}
 	
 	/// Returns a generated copy of this maze.
@@ -98,7 +98,25 @@ public struct Maze {
 	internal func inBounds(_ row: Int, _ column: Int) -> Bool {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
-	
+
+	func canMove(point: MazePoint, in direction: Generator.Direction) -> Bool {
+		let destination = point.offsetting(in: direction, by: Generator.step)
+		guard inBounds(destination.row, destination.column) else {
+			return false
+		}
+		let ahead = self[destination] != .passable &&
+			self[destination.offsetting(in: direction, by: -1)] != .passable
+		let opposites = Generator.oppositeDirections(in: direction)
+		let walls = [point.offsetting(in: opposites.0, by: 1),
+								 point.offsetting(in: opposites.1, by: 1)]
+
+		var wallsClear: Bool = true
+		for point in walls where inBounds(point.row, point.column) {
+			wallsClear = self[point.offsetting(in: direction, by: 1)] == .impassable &&
+									self[point.offsetting(in: direction, by: 2)] == .impassable
+		}
+		return ahead && wallsClear
+	}
 }
 
 // MARK: - CustomStringConvertible

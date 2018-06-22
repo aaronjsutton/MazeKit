@@ -20,10 +20,9 @@ internal enum GenerationError: Error {
 internal class Generator {
 
 	/// The step size of the generator. Internal use only.
-	private static var step = 2
+	static var step = 2
 
 	private var current: MazePoint
-	private var maze: Maze
 
 	var visited: [MazePoint] = []
 	var track: [MazePoint] = []
@@ -36,12 +35,11 @@ internal class Generator {
 		case W
 	}
 
-	internal init(_ maze: Maze, start point: MazePoint) {
-		self.maze = maze
+	internal init(start point: MazePoint) {
 		self.current = point
 	}
 
-	internal func generate(_ point: MazePoint) throws {
+	internal func generate(_ point: MazePoint, _ maze: inout Maze) throws {
 		current = point
 		visited.reserveCapacity(maze.spaces)
 		track.reserveCapacity(maze.spaces)
@@ -59,7 +57,7 @@ internal class Generator {
 			let middle = destination.offsetting(in: selectedDirection, by: -1)
 			let searched = [middle, destination]
 
-			if canMove(point: current, in: selectedDirection) {
+			if maze.canMove(point: current, in: selectedDirection) {
 				maze[destination] = .passable
 				maze[middle] = .passable
 				track += searched
@@ -80,14 +78,13 @@ internal class Generator {
 		return Direction(rawValue: arc4random_uniform(4))!
 	}
 
-	private func canMove(point: MazePoint, in direction: Direction) -> Bool {
-		let destination = point.offsetting(in: direction, by: Generator.step)
-		guard maze.inBounds(destination.row, destination.column) else {
-			return false
+	static func oppositeDirections(in direction: Direction) -> (Direction, Direction) {
+		switch direction {
+		case .N, .S:
+			return (.E, .W)
+		case .E, .W:
+			return (.N, .S)
 		}
-		let ahead = maze[destination] != .passable &&
-					 				maze[destination.offsetting(in: direction, by: -1)] != .passable
-		return ahead
-
 	}
+
 }
