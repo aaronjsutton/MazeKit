@@ -10,6 +10,11 @@ import Foundation
 
 /// A structure that represents a point on the maze grid.
 public struct MazePoint: Hashable {
+
+	public static var zero: MazePoint {
+		return MazePoint(row: 0, column: 0)
+	}
+
 	/// X coordinate
 	public var row: Int
 	/// Y coordinate

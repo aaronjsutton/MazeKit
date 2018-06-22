@@ -44,10 +44,29 @@ class MazeKitTests: XCTestCase {
 
 
 	func testGenerate() {
-		var maze = Maze(width: 10, height: 10)
+		var maze: Maze
+		maze = Maze(width: 10, height: 10)
+		try! maze.generate(start: MazePoint(row: 0, column: 0))
+		print(maze)
+
+		maze = Maze(width: 25, height: 25)
+		try! maze.generate(start: MazePoint(row: 0, column: 0))
+		print(maze)
+
+		maze = Maze(width: 10, height: 25)
+		try! maze.generate(start: MazePoint(row: 0, column: 0))
+		print(maze)
+
+		maze = Maze(width: 500, height: 500)
 		try! maze.generate(start: MazePoint(row: 0, column: 0))
 		print(maze)
 	}
 
+	func testGenerationPerformance() {
+		var maze = Maze(width: 50, height: 50)
+		self.measure {
+			try! maze.generate(start: MazePoint.zero)
+		}
+	}
 
 }
