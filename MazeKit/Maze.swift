@@ -46,8 +46,8 @@ public struct Maze {
 		self.rows = rows % 2 != 0 ? rows : rows + 1
 		self.columns = columns % 2 != 0 ? columns : columns + 1
 		self.grid = Array(repeating: Array(repeating: .impassable,
-																			 count: columns),
-											count: rows)
+																			 count: self.columns),
+											count: self.rows)
 	}
 	
 	/// Generates a maze in-place.
