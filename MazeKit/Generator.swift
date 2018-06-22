@@ -24,12 +24,29 @@ internal class Generator {
 
 	private var current: MazePoint
 
-//	var visited: [MazePoint] = []
+	//	var visited: [MazePoint] = []
 	var track: [MazePoint] = []
 	private var directions: [Direction] = []
 
-	internal enum Direction: UInt32, CaseIterable {
-		case N = 0
+	internal enum Direction: CaseIterable {
+
+		/// Generates a random direction.
+		///
+		/// - Parameter directions: Exclude this set from the directions.
+		/// - Returns: Returns nil if `directions` is equal to pr
+		static func random(exclude directions: [Direction]) -> Direction? {
+			guard directions.count < Direction.allCases.count else {
+				return nil
+			}
+			var result: Direction
+			repeat {
+				// Force unwrap because we know allCases will never be empty.
+				result = Direction.allCases.randomElement()!
+			} while directions.contains(result)
+			return result
+		}
+
+		case N
 		case E
 		case S
 		case W
@@ -41,45 +58,33 @@ internal class Generator {
 
 	internal func generate(_ point: MazePoint, _ maze: inout Maze) throws {
 		current = point
-		// Don't need this stack after all.
-//		visited.reserveCapacity(maze.spaces)
 		track.reserveCapacity(maze.spaces)
-//		visited.append(point)
 		track.append(point)
 		maze[current] = .passable
 
 		// Refactor the hell out of this :]
 		while track.count > 0  {
-			var selectedDirection = randomDirection()
-			while directions.contains(selectedDirection) &&
-				directions.count != Direction.allCases.count {
-				selectedDirection = randomDirection()
+			guard let selected = Direction.random(exclude: directions) else {
+				directions = []
+				current = track.last!
+				track.removeLast()
+				continue
 			}
-			let destination = current.offsetting(in: selectedDirection, by: Generator.step)
-			let middle = destination.offsetting(in: selectedDirection, by: -1)
+
+			let destination = current.offsetting(in: selected, by: Generator.step)
+			let middle = destination.offsetting(in: selected, by: -1)
 			let searched = [middle, destination]
 
-			if maze.canMove(point: current, in: selectedDirection) {
+			if maze.canMove(point: current, in: selected) {
 				maze[destination] = .passable
 				maze[middle] = .passable
 				track += searched
 				current = destination
 				directions = []
-			} else if directions.count == Direction.allCases.count {
-				current = track.last!
-				track.removeLast()
-				directions = []
 			} else {
-				directions += [selectedDirection]
+				directions += [selected]
 			}
 		}
-	}
-
-	/// Generates a random direction.
-	///
-	/// - Returns: A direction.
-	private func randomDirection() -> Direction {
-		return Direction(rawValue: UInt32.random(in: 0...3))!
 	}
 
 	static func oppositeDirections(in direction: Direction) -> (Direction, Direction) {
