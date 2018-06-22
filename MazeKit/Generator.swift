@@ -24,7 +24,7 @@ internal class Generator {
 
 	private var current: MazePoint
 
-	var visited: [MazePoint] = []
+//	var visited: [MazePoint] = []
 	var track: [MazePoint] = []
 	private var directions: [Direction] = []
 
@@ -41,13 +41,15 @@ internal class Generator {
 
 	internal func generate(_ point: MazePoint, _ maze: inout Maze) throws {
 		current = point
-		visited.reserveCapacity(maze.spaces)
+		// Don't need this stack after all.
+//		visited.reserveCapacity(maze.spaces)
 		track.reserveCapacity(maze.spaces)
-		visited.append(point)
+//		visited.append(point)
 		track.append(point)
 		maze[current] = .passable
 
-		while visited.count < maze.spaces  {
+		// Refactor the hell out of this :]
+		while track.count > 0  {
 			var selectedDirection = randomDirection()
 			while directions.contains(selectedDirection) &&
 				directions.count != Direction.allCases.count {
@@ -70,10 +72,12 @@ internal class Generator {
 			} else {
 				directions += [selectedDirection]
 			}
-			visited += maze.inBounds(destination.row, destination.column) ? searched : []
 		}
 	}
 
+	/// Generates a random direction.
+	///
+	/// - Returns: A direction.
 	private func randomDirection() -> Direction {
 		return Direction(rawValue: arc4random_uniform(4))!
 	}

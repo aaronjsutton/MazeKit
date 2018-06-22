@@ -44,7 +44,7 @@ class MazeKitTests: XCTestCase {
 
 
 	func testGenerate() {
-		var maze = Maze(width: 25, height: 25)
+		var maze = Maze(width: 15, height: 15)
 		try! maze.generate(start: MazePoint(row: 0, column: 0))
 		print(maze)
 	}
