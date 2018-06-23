@@ -113,10 +113,10 @@ public struct Maze {
 		if inBounds(destination.row, destination.column) {
 			ahead = ahead && self[destination] == .impassable
 		}
-		let opposites = Direction.perpendicular(from: direction)
-		let walls = [point.offsetting(in: opposites.0, by: 1),
-								 point.offsetting(in: opposites.1, by: 1)]
-
+		var walls: [MazePoint] = []
+		for direction in Direction.perpendicular(from: direction) {
+			walls += [point.offsetting(in: direction, by: 1)]
+		}
 		var wallsClear: Bool = true
 		for point in walls where inBounds(point.row, point.column) {
 			wallsClear = wallsClear && self[point.offsetting(in: direction, by: 1)] == .impassable &&

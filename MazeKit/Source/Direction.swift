@@ -36,18 +36,12 @@ internal enum Direction: CaseIterable {
 		return result
 	}
 
-
 	/// Returns the directions that are perpendicular to a given direction.
 	///
-	/// - Parameter direction: <#direction description#>
-	/// - Returns: <#return value description#>
+	/// - Parameter direction: The initial direction.
+	/// - Returns: Two values, directions perpendiuclar to `direction`
 	static func perpendicular(from direction: Direction) -> Set<Direction> {
-		switch direction {
-		case .N, .S:
-			return (.E, .W)
-		case .E, .W:
-			return (.N, .S)
-		}
+		return direction == .N || direction == .S ? [.E, .W] : [.N, .S]
 	}
 
 	
