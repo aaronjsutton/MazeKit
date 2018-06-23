@@ -12,6 +12,7 @@
 		CC00E41A20D8884600025A4D /* MazeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC00E40C20D8884500025A4D /* MazeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC00E42420D8887B00025A4D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E42320D8887B00025A4D /* Maze.swift */; };
 		CC7FCB5820D9684100843C58 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7FCB5720D9684100843C58 /* Generator.swift */; };
+		CC8F7EC420DDADA60065A61E /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8F7EC320DDADA60065A61E /* Direction.swift */; };
 		CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		CC00E41920D8884600025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC00E42320D8887B00025A4D /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		CC7FCB5720D9684100843C58 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		CC8F7EC320DDADA60065A61E /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,9 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				CC00E40C20D8884500025A4D /* MazeKit.h */,
-				CC00E42320D8887B00025A4D /* Maze.swift */,
-				CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */,
-				CC7FCB5720D9684100843C58 /* Generator.swift */,
+				CC8F7EC520DDADDA0065A61E /* Source */,
 				CC00E40D20D8884500025A4D /* Info.plist */,
 			);
 			path = MazeKit;
@@ -93,6 +93,17 @@
 				CC00E41920D8884600025A4D /* Info.plist */,
 			);
 			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		CC8F7EC520DDADDA0065A61E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CC8F7EC320DDADA60065A61E /* Direction.swift */,
+				CC00E42320D8887B00025A4D /* Maze.swift */,
+				CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */,
+				CC7FCB5720D9684100843C58 /* Generator.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */,
 				CC00E42420D8887B00025A4D /* Maze.swift in Sources */,
 				CC7FCB5820D9684100843C58 /* Generator.swift in Sources */,
+				CC8F7EC420DDADA60065A61E /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

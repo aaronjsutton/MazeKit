@@ -11,13 +11,12 @@ import Foundation
 /// A structure that represents a point on the maze grid.
 public struct MazePoint: Hashable {
 
+	/// A point at the top-left corner of any maze.
 	public static var zero: MazePoint {
 		return MazePoint(row: 0, column: 0)
 	}
 
-	/// X coordinate
 	public var row: Int
-	/// Y coordinate
 	public var column: Int
 
 	/// Returns a point offset from this point.
@@ -26,7 +25,7 @@ public struct MazePoint: Hashable {
 	///   - direction: The direction to offset in.
 	///   - amount: Number of points to offset by.
 	/// - Returns: The new point.
-	func offsetting(in direction: Generator.Direction, by amount: Int) -> MazePoint {
+	func offsetting(in direction: Direction, by amount: Int) -> MazePoint {
 		switch direction {
 		case .N:
 			return MazePoint(row: self.row - amount, column: self.column)
@@ -44,7 +43,7 @@ public struct MazePoint: Hashable {
 	/// - Parameters:
 	///   - direction: The direction to offset in.
 	///   - amount: The amount of points to offset by.
-	mutating func offset(in direction: Generator.Direction, by amount: Int) {
+	mutating func offset(in direction: Direction, by amount: Int) {
 		switch direction {
 		case .N:
 			self.row -= amount

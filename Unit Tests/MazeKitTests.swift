@@ -46,15 +46,15 @@ class MazeKitTests: XCTestCase {
 	func testGenerate() {
 		var maze: Maze
 		maze = Maze(width: 10, height: 10)
-		try! maze.generate(start: MazePoint(row: 0, column: 0))
+		 maze.generate(start: MazePoint(row: 0, column: 0))
 		print(maze)
 
 		maze = Maze(width: 25, height: 25)
-		try! maze.generate(start: MazePoint(row: 0, column: 0))
+		 maze.generate(start: MazePoint(row: 0, column: 0))
 		print(maze)
 
 		maze = Maze(width: 10, height: 25)
-		try! maze.generate(start: MazePoint(row: 0, column: 0))
+		 maze.generate(start: MazePoint(row: 0, column: 0))
 		print(maze)
 
 	}
@@ -62,8 +62,18 @@ class MazeKitTests: XCTestCase {
 	func testGenerationPerformance() {
 		self.measure {
 			var maze = Maze(width: 100, height: 100)
-			try! maze.generate(start: MazePoint.zero)
+			 maze.generate(start: MazePoint.zero)
 		}
+	}
+
+	func testMemoryBaseline() {
+		// Current baseline: 45.4MB
+		()
+	}
+
+	func testMemoryFootprint() {
+		var maze = Maze(width: 100, height: 100)
+		 maze.generate(start: MazePoint.zero)
 	}
 
 }

@@ -9,6 +9,9 @@
 import Foundation
 
 /// A structure that represents the underlying data for a grid based maze.
+///
+///	In the coordinate space of a maze. The *origin* (0, 0)
+///	is located at the top-right corner of a maze.
 public struct Maze {
 	
 	/// Represents the two states of a maze space.
@@ -51,9 +54,9 @@ public struct Maze {
 	}
 	
 	/// Generates a maze in-place.
-	public mutating func generate(start point: MazePoint) throws {
+	public mutating func generate(start point: MazePoint) {
 		let generator = Generator(start: point)
-		try generator.generate(point, &self)
+		generator.generate(point, &self)
 	}
 	
 	/// Returns a generated copy of this maze.
@@ -66,8 +69,7 @@ public struct Maze {
 	//		return copy
 	//	}
 	
-	/// Returns a row of spaces. This allows for
-	/// double bracket style subscript syntax.
+	/// Returns the value of a
 	///
 	/// - Parameter row: The row index.
 	public subscript(row: Int, column: Int) -> Space {
@@ -99,7 +101,8 @@ public struct Maze {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
 
-	func canMove(point: MazePoint, in direction: Generator.Direction) -> Bool {
+	// TODO: Refactor
+	func canMove(point: MazePoint, in direction: Direction) -> Bool {
 		var destination = point.offsetting(in: direction, by: Generator.step)
 		guard inBounds(destination.row, destination.column) else {
 			return false
@@ -110,7 +113,7 @@ public struct Maze {
 		if inBounds(destination.row, destination.column) {
 			ahead = ahead && self[destination] == .impassable
 		}
-		let opposites = Generator.oppositeDirections(in: direction)
+		let opposites = Direction.perpendicular(from: direction)
 		let walls = [point.offsetting(in: opposites.0, by: 1),
 								 point.offsetting(in: opposites.1, by: 1)]
 
@@ -125,7 +128,8 @@ public struct Maze {
 
 // MARK: - CustomStringConvertible
 extension Maze: CustomStringConvertible {
-	/// Prints the maze data using Unicode box drawing characters
+	/// Prints the maze data using Unicode box drawing characters.
+	/// Suitable for debugging purposes.
 	public var description: String {
 		let border = String(repeatElement("━", count: columns * 2))
 		var box = "┏\(border)┓\n"
