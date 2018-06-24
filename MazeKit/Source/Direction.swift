@@ -6,8 +6,6 @@
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
 //
 
-import Foundation
-
 /// An enumeration that represents the four cardinal directions.
 ///
 /// - N: North

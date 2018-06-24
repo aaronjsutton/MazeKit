@@ -6,8 +6,6 @@
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
 //
 
-import Foundation
-
 /// A structure that represents a point on the maze grid.
 public struct MazePoint: Hashable {
 

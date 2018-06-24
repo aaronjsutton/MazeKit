@@ -6,8 +6,6 @@
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
 //
 
-import Foundation
-
 /// A structure that represents the underlying data for a grid based maze.
 ///
 ///	In the coordinate space of a maze. The *origin* (0, 0)
@@ -22,11 +20,10 @@ public struct Maze {
 		case passable
 		case impassable
 	}
-	
-	/// True if the maze has undergone generation.
-	public var isGenerated: Bool = false
+
 	/// The number of columns in the maze grid.
 	public var columns: Int
+	
 	/// The number of rows in the maze grid.
 	public var rows: Int
 

@@ -6,8 +6,6 @@
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
 //
 
-import UIKit
-
 /// An internal class the implements stack based generation.
 internal class Generator {
 
@@ -40,8 +38,8 @@ internal class Generator {
 			/// The direction to search. If every direction has been exhausted,
 			/// unwind the stack and retry.
 			guard let direction = Direction.random(exclude: directions) else {
-				directions.removeAll()
 				current = track.popLast()!
+				directions.removeAll()
 				continue
 			}
 
