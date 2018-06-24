@@ -143,10 +143,10 @@ public struct Maze {
 	/// - Parameters:
 	///   - base: The base point of the construction.
 	///   - direction: The direction to construct in.
-	///   - constructor: Called if a path can be created in `direction`
-	func construct(from base: MazePoint,
-								 in direction: Direction,
-								 _ constructor: (Generator.Construction?) -> ()) {
+	///   - constructor: Passed `nil` if the construction was invalid.
+	internal func construct(from base: MazePoint,
+													in direction: Direction,
+													_ constructor: (Generator.Construction?) -> ()) {
 		/// The path used in a maze construction.
 		var construction: Generator.Construction? = nil
 
@@ -160,7 +160,7 @@ public struct Maze {
 		guard self.contains(destination) &&
 					self[destination] == .impassable
 		else {
-			return
+				return
 		}
 
 		/// The point between `destination` and `base`
@@ -190,8 +190,9 @@ public struct Maze {
 			return
 		}
 
-		// Assign the construction.
-		construction = Generator.Construction(destination: destination, pathway: pathway)
+		// Create the construction.
+		construction = Generator.Construction(destination: destination,
+																					pathway: pathway)
 	}
 }
 
