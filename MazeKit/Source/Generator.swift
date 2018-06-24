@@ -37,25 +37,25 @@ internal class Generator {
 		maze[current] = .passable
 
 		while track.count > 0  {
-			guard let selected = Direction.random(exclude: directions) else {
+			guard let direction = Direction.random(exclude: directions) else {
 				directions = []
 				current = track.last!
 				track.removeLast()
 				continue
 			}
 
-			let destination = current.offsetting(in: selected, by: Generator.step)
-			let middle = destination.offsetting(in: selected, by: -1)
+			let destination = current.offsetting(in: direction, by: Generator.step)
+			let middle = destination.offsetting(in: direction, by: -1)
 			let searched = [middle, destination]
 
-			if maze.canMove(point: current, in: selected) {
+			if maze.canMove(point: current, in: direction) {
 				maze[destination] = .passable
 				maze[middle] = .passable
 				track += searched
 				current = destination
 				directions = []
 			} else {
-				directions.insert(selected)
+				directions.insert(direction)
 			}
 		}
 	}

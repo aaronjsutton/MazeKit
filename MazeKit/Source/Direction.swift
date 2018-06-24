@@ -20,6 +20,14 @@ internal enum Direction: CaseIterable {
 	case S
 	case W
 
+	/// Returns the directions that are perpendicular to a given direction.
+	///
+	/// - Parameter direction: The initial direction.
+	/// - Returns: Two values, directions perpendiuclar to `direction`
+	var perpendiculars: Set<Direction> {
+		return (self == .N || self == .S) ? [.E, .W] : [.N, .S]
+	}
+
 	/// Generates a random direction.
 	///
 	/// - Parameter directions: Exclude this set from the directions.
@@ -34,14 +42,6 @@ internal enum Direction: CaseIterable {
 			result = Direction.allCases.randomElement()!
 		} while directions.contains(result)
 		return result
-	}
-
-	/// Returns the directions that are perpendicular to a given direction.
-	///
-	/// - Parameter direction: The initial direction.
-	/// - Returns: Two values, directions perpendiuclar to `direction`
-	static func perpendicular(from direction: Direction) -> Set<Direction> {
-		return direction == .N || direction == .S ? [.E, .W] : [.N, .S]
 	}
 
 	

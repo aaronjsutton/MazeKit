@@ -114,7 +114,7 @@ public struct Maze {
 			ahead = ahead && self[destination] == .impassable
 		}
 		var walls: [MazePoint] = []
-		for direction in Direction.perpendicular(from: direction) {
+		for direction in direction.perpendiculars {
 			walls += [point.offsetting(in: direction, by: 1)]
 		}
 		var wallsClear: Bool = true
