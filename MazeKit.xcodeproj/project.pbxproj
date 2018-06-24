@@ -14,6 +14,7 @@
 		CC7FCB5820D9684100843C58 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7FCB5720D9684100843C58 /* Generator.swift */; };
 		CC8F7EC420DDADA60065A61E /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8F7EC320DDADA60065A61E /* Direction.swift */; };
 		CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */; };
+		CCDB823120E0653A007A9635 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCDB823020E0653A007A9635 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		CC7FCB5720D9684100843C58 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		CC8F7EC320DDADA60065A61E /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePoint.swift; sourceTree = "<group>"; };
+		CCDB823020E0653A007A9635 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				CC00E40C20D8884500025A4D /* MazeKit.h */,
+				CCDB823020E0653A007A9635 /* Media.xcassets */,
 				CC8F7EC520DDADDA0065A61E /* Source */,
 				CC00E40D20D8884500025A4D /* Info.plist */,
 			);
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDB823120E0653A007A9635 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
