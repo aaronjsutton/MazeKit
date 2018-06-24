@@ -6,8 +6,19 @@
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
 //
 
+
 /// An internal class the implements stack based generation.
 internal class Generator {
+
+	/// Represents a `destination` point that is two units away from the
+	/// current, where `pathway` is between them.
+	struct Construction {
+		var destination: MazePoint
+		var pathway: MazePoint
+		var searched: [MazePoint] {
+			return [pathway, destination]
+		}
+	}
 
 	/// The step size of the generator. Internal use only.
 	static var step = 2
@@ -15,8 +26,9 @@ internal class Generator {
 	/// The currently selected point
 	private var current: MazePoint
 
-	//	var visited: [MazePoint] = []
-	var track: [MazePoint] = []
+	/// The generator's tracking stack.
+	private var track: [MazePoint] = []
+
 	/// Directions that have been searched.
 	private var directions: Set<Direction> = []
 
@@ -43,21 +55,18 @@ internal class Generator {
 				continue
 			}
 
-			/// The point that could be moved to.
-			let destination = current.offsetting(in: direction, by: Generator.step)
-			/// The space between the current point and the destination.
-			let pathway = destination.offsetting(in: direction, by: -1)
-			/// An array of the two cells searched.
-			let searched = [pathway, destination]
-
-			if maze.canMove(point: current, in: direction) {
-				maze[destination] = .passable
-				maze[pathway] = .passable
-				track += searched
-				current = destination
+			maze.construct(from: current, in: direction) { result in
+				// Validate that the direction is valid.
+				guard let construction = result else {
+					directions.insert(direction)
+ 					return
+				}
+				// Create the path.
+				maze[construction.destination] = .passable
+				maze[construction.pathway] = .passable
+				track += construction.searched
+				current = construction.destination
 				directions.removeAll()
-			} else {
-				directions.insert(direction)
 			}
 		}
 	}

@@ -34,15 +34,16 @@ public struct Maze {
 	/// has not been generated.
 	public var end: MazePoint?
 
-	/// The generator object responsible for generating the maze.
-	private var generator: Generator
-
 	/// The total number of spaces in the maze.
 	public var spaces: Int {
 		return rows * columns
 	}
-	
-	internal var grid: [[Space]]
+
+	/// The generator object responsible for generating the maze.
+	private var generator: Generator
+
+	/// Representation of a maze's spaces.
+	private var grid: [[Space]]
 	
 	/// Create a new maze, ungenerated.
 	///
@@ -97,7 +98,7 @@ public struct Maze {
 	///
 	/// - Parameter row: The row index.
 	public subscript(row: Int, column: Int) -> Space {
-		assert(inBounds(row, column), "Index out of bounds")
+		assert(contains(row, column), "Index out of bounds")
 		return grid[row][column]
 	}
 	
@@ -118,33 +119,79 @@ public struct Maze {
 	/// - Parameters:
 	///   - row: Row of the point.
 	///   - column: Column of the point
-	/// - Returns: True if in bounds, false if not.
-	internal func inBounds(_ row: Int, _ column: Int) -> Bool {
+	internal func contains(_ row: Int, _ column: Int) -> Bool {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
 
-	// TODO: Refactor closure-style
-	func canMove(point: MazePoint, in direction: Direction) -> Bool {
-		var destination = point.offsetting(in: direction, by: Generator.step)
-		guard inBounds(destination.row, destination.column) else {
-			return false
+	/// Determines if a point is within the bounds of the maze.
+	///
+	/// - Parameter point: The point to check.
+	/// - Returns: True if in bounds, false if not.
+	internal func contains(_ point: MazePoint) -> Bool {
+		let row = point.row
+		let column = point.column
+		return contains(row, column)
+	}
+
+	/// Determines if a path can be constructed in a certain direction.
+	/// If a path can be constructed, `constructor` is called, passing in
+	/// the information about the points to be constructed.
+	///
+	/// This function favors an exit-early approach,
+	/// reducing uneeded computation.
+	///
+	/// - Parameters:
+	///   - base: The base point of the construction.
+	///   - direction: The direction to construct in.
+	///   - constructor: Called if a path can be created in `direction`
+	func construct(from base: MazePoint,
+								 in direction: Direction,
+								 _ constructor: (Generator.Construction?) -> ()) {
+		/// The path used in a maze construction.
+		var construction: Generator.Construction? = nil
+
+		defer {
+			constructor(construction)
 		}
-		var ahead = self[destination] != .passable &&
-			self[destination.offsetting(in: direction, by: -1)] != .passable
-		destination.offset(in: direction, by: 1)
-		if inBounds(destination.row, destination.column) {
-			ahead = ahead && self[destination] == .impassable
+
+		/// The destination point.
+		let destination = base.offsetting(in: direction,
+																			by: Generator.step)
+		guard self.contains(destination) &&
+					self[destination] == .impassable
+		else {
+			return
 		}
-		var walls: [MazePoint] = []
-		for direction in direction.perpendiculars {
-			walls += [point.offsetting(in: direction, by: 1)]
+
+		/// The point between `destination` and `base`
+		let pathway = destination.offsetting(in: direction, by: -1)
+		guard self[pathway] != .passable else {
+			return
 		}
-		var wallsClear: Bool = true
-		for point in walls where inBounds(point.row, point.column) {
-			wallsClear = wallsClear && self[point.offsetting(in: direction, by: 1)] == .impassable &&
-									self[point.offsetting(in: direction, by: 2)] == .impassable
+
+		/// Points to either side of `base`
+		var surrounding = [MazePoint]()
+		direction.perpendiculars.forEach { direction in
+			surrounding.append(base.offsetting(in: direction, by: 1))
 		}
-		return ahead && wallsClear
+		for _ in 1...Generator.step {
+			surrounding += surrounding.map { point in
+				point.offsetting(in: direction, by: 1)
+			}
+		}
+		surrounding.removeFirst(2)
+
+		// Validate surrounding.
+		var valid = true
+		for point in surrounding where self.contains(point) {
+			valid = valid && self[point] != .passable
+		}
+		guard valid else {
+			return
+		}
+
+		// Assign the construction.
+		construction = Generator.Construction(destination: destination, pathway: pathway)
 	}
 }
 
@@ -163,8 +210,6 @@ extension Maze: CustomStringConvertible {
 			}
 			box += ("┃\n")
 		}
-
-
 		
 		box += "┗\(border)┛\n"
 		return box
