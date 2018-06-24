@@ -29,7 +29,17 @@ public struct Maze {
 	public var columns: Int
 	/// The number of rows in the maze grid.
 	public var rows: Int
-	
+
+	/// The starting point of the maze.
+	public var start: MazePoint
+
+	/// The endpoint of the maze. Nil if the maze
+	/// has not been generated.
+	public var end: MazePoint?
+
+	/// The generator object responsible for generating the maze.
+	private var generator: Generator
+
 	/// The total number of spaces in the maze.
 	public var spaces: Int {
 		return rows * columns
@@ -42,21 +52,37 @@ public struct Maze {
 	/// - Parameters:
 	///   - rows: Number of rows in the maze.
 	///   - columns: Number of columns in the maze.
+	///		- point: The starting point of the maze. Defaults to (0,0).
 	///
 	/// - Warning: Both `rows` and `columns` must be odd. If
 	/// 					 the values passed in are even, they will be incremented.
-	public init(width columns: Int, height rows: Int) {
+	public init(width columns: Int,
+							height rows: Int,
+							start point: MazePoint = MazePoint.zero) {
 		self.rows = rows % 2 != 0 ? rows : rows + 1
 		self.columns = columns % 2 != 0 ? columns : columns + 1
-		self.grid = Array(repeating: Array(repeating: .impassable,
-																			 count: self.columns),
-											count: self.rows)
+		self.start = point
+		self.grid = [[Space]](repeating: [Space](repeating: .impassable, count: self.columns),
+													count: self.rows)
+		self.generator = Generator(start)
 	}
 	
 	/// Generates a maze in-place.
-	public mutating func generate(start point: MazePoint) {
-		let generator = Generator(start: point)
-		generator.generate(point, &self)
+	public mutating func generate() {
+		generator.generate(&self)
+	}
+
+	/// Reset a maze to inital values.
+	/// The maze will not be generated.
+	public mutating func reset() {
+		grid = [[Space]](repeating: [Space](repeating: .impassable, count: columns),
+										 count: self.rows)
+	}
+
+	/// Reset and then generates the maze.
+	public mutating func regenerate() {
+		reset()
+		generate()
 	}
 	
 	/// Returns a generated copy of this maze.
@@ -69,7 +95,7 @@ public struct Maze {
 	//		return copy
 	//	}
 	
-	/// Returns the value of a
+	/// Returns the value of a space.
 	///
 	/// - Parameter row: The row index.
 	public subscript(row: Int, column: Int) -> Space {
@@ -77,6 +103,9 @@ public struct Maze {
 		return grid[row][column]
 	}
 	
+	/// Get/set subscript used by the Generator class.
+	///
+	/// - Parameter point: Space that can be read/written.
 	internal subscript(point: MazePoint) -> Space {
 		get {
 			return self[point.row, point.column]
@@ -85,12 +114,7 @@ public struct Maze {
 			self.grid[point.row][point.column] = newValue
 		}
 	}
-	
-	private subscript(row: Int) -> [Space] {
-		assert(inBounds(row, 0), "Index out of bounds")
-		return grid[row]
-	}
-	
+
 	/// Determines if a point is within the bounds of the maze.
 	///
 	/// - Parameters:
@@ -136,7 +160,7 @@ extension Maze: CustomStringConvertible {
 		
 		for row in 0...rows - 1 {
 			box += "┃"
-			for space in self[row] {
+			for space in grid[row] {
 				box += space == .passable ? "00" : "██"
 			}
 			box += ("┃\n")

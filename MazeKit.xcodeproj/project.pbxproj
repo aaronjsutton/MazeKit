@@ -99,9 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				CC8F7EC320DDADA60065A61E /* Direction.swift */,
+				CC7FCB5720D9684100843C58 /* Generator.swift */,
 				CC00E42320D8887B00025A4D /* Maze.swift */,
 				CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */,
-				CC7FCB5720D9684100843C58 /* Generator.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

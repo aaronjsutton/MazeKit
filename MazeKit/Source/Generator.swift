@@ -19,10 +19,12 @@ internal class Generator {
 
 	//	var visited: [MazePoint] = []
 	var track: [MazePoint] = []
+	/// Directions that have been searched.
 	private var directions: Set<Direction> = []
 
-	internal init(start point: MazePoint) {
+	internal init(_ point: MazePoint) {
 		self.current = point
+		track.append(current)
 	}
 
 	/// Generate a maze.
@@ -30,35 +32,35 @@ internal class Generator {
 	/// - Parameters:
 	///   - point: The point at which generation will begin.
 	///   - maze: The maze object to generate
-	internal func generate(_ point: MazePoint, _ maze: inout Maze) {
-		current = point
+	internal func generate(_ maze: inout Maze) {
 		track.reserveCapacity(maze.spaces)
-		track.append(point)
 		maze[current] = .passable
 
 		while track.count > 0  {
+			/// The direction to search. If every direction has been exhausted,
+			/// unwind the stack and retry.
 			guard let direction = Direction.random(exclude: directions) else {
-				directions = []
-				current = track.last!
-				track.removeLast()
+				directions.removeAll()
+				current = track.removeLast()
 				continue
 			}
 
+			/// The point that could be moved to.
 			let destination = current.offsetting(in: direction, by: Generator.step)
-			let middle = destination.offsetting(in: direction, by: -1)
-			let searched = [middle, destination]
+			/// The space between the current point and the destination.
+			let pathway = destination.offsetting(in: direction, by: -1)
+			/// An array of the two cells searched.
+			let searched = [pathway, destination]
 
 			if maze.canMove(point: current, in: direction) {
 				maze[destination] = .passable
-				maze[middle] = .passable
+				maze[pathway] = .passable
 				track += searched
 				current = destination
-				directions = []
+				directions.removeAll()
 			} else {
 				directions.insert(direction)
 			}
 		}
 	}
-
-
 }
