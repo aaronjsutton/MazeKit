@@ -74,15 +74,16 @@ public struct Maze {
 
 	/// Reset a maze to inital values.
 	/// The maze will not be generated.
-	public mutating func reset() {
+	///
+	/// - Parameters:
+	///   - point: A new starting point. Optional.
+	///   - regenerate: Indicates if the maze should be regenerated. Defaults to false.
+	public mutating func reset(to point: MazePoint? = nil,
+														 regenerate: Bool = false) {
+		generator.reset(to: (point != nil ? point! : start))
 		grid = [[Space]](repeating: [Space](repeating: .impassable, count: columns),
 										 count: self.rows)
-	}
-
-	/// Reset and then generates the maze.
-	public mutating func regenerate() {
-		reset()
-		generate()
+		if regenerate { generate() }
 	}
 	
 	/// Returns a generated copy of this maze.
@@ -125,7 +126,7 @@ public struct Maze {
 		return row >= 0 && row < rows && column >= 0 && column < columns
 	}
 
-	// TODO: Refactor
+	// TODO: Refactor closure-style
 	func canMove(point: MazePoint, in direction: Direction) -> Bool {
 		var destination = point.offsetting(in: direction, by: Generator.step)
 		guard inBounds(destination.row, destination.column) else {
@@ -158,13 +159,15 @@ extension Maze: CustomStringConvertible {
 		let border = String(repeatElement("━", count: columns * 2))
 		var box = "┏\(border)┓\n"
 		
-		for row in 0...rows - 1 {
+		for row in grid {
 			box += "┃"
-			for space in grid[row] {
+			for space in row {
 				box += space == .passable ? "00" : "██"
 			}
 			box += ("┃\n")
 		}
+
+
 		
 		box += "┗\(border)┛\n"
 		return box

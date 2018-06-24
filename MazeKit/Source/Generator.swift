@@ -36,12 +36,12 @@ internal class Generator {
 		track.reserveCapacity(maze.spaces)
 		maze[current] = .passable
 
-		while track.count > 0  {
+		while !track.isEmpty  {
 			/// The direction to search. If every direction has been exhausted,
 			/// unwind the stack and retry.
 			guard let direction = Direction.random(exclude: directions) else {
 				directions.removeAll()
-				current = track.removeLast()
+				current = track.popLast()!
 				continue
 			}
 
@@ -63,4 +63,13 @@ internal class Generator {
 			}
 		}
 	}
+
+	/// Reset the generator.
+	///
+	/// - Parameter point: The starting point.
+	internal func reset(to point: MazePoint) {
+		current = point
+		track.append(point)
+	}
+
 }
