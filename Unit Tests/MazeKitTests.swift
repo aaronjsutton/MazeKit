@@ -63,9 +63,9 @@ class MazeKitTests: XCTestCase {
 	}
 
 	func testGenerationPerformance() {
+		var maze = Maze(width: 100, height: 100)
 		self.measure {
-			var maze = Maze(width: 100, height: 100)
-			maze.generate()
+			maze.reset(regenerate: true)
 		}
 	}
 
