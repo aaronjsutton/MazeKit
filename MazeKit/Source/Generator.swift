@@ -6,16 +6,15 @@
 //  Copyright © 2018 Aaron Sutton. All rights reserved.
 //
 
-
-/// An internal class the implements stack based generation.
+/// An internal class that implements stack based generation.
 internal class Generator {
 
 	/// Represents a `destination` point that is two units away from the
 	/// current, where `pathway` is between them.
 	struct Construction {
-		var destination: MazePoint
-		var pathway: MazePoint
-		var searched: [MazePoint] {
+		var destination: Point
+		var pathway: Point
+		var searched: [Point] {
 			return [pathway, destination]
 		}
 	}
@@ -24,15 +23,15 @@ internal class Generator {
 	static var step = 2
 
 	/// The currently selected point
-	private var current: MazePoint
+	private var current: Point
 
 	/// The generator's tracking stack.
-	private var track: [MazePoint] = []
+	private var track: [Point] = []
 
 	/// Directions that have been searched.
 	private var directions: Set<Direction> = []
 
-	internal init(_ point: MazePoint) {
+	internal init(_ point: Point) {
 		self.current = point
 		track.append(current)
 	}
@@ -74,7 +73,7 @@ internal class Generator {
 	/// Reset the generator.
 	///
 	/// - Parameter point: The starting point.
-	internal func reset(to point: MazePoint) {
+	internal func reset(to point: Point) {
 		current = point
 		track.append(point)
 	}

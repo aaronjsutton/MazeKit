@@ -13,7 +13,7 @@
 		CC00E42420D8887B00025A4D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC00E42320D8887B00025A4D /* Maze.swift */; };
 		CC7FCB5820D9684100843C58 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7FCB5720D9684100843C58 /* Generator.swift */; };
 		CC8F7EC420DDADA60065A61E /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8F7EC320DDADA60065A61E /* Direction.swift */; };
-		CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */; };
+		CCBE0DE620DC1ED700DA99E5 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE0DE520DC1ED700DA99E5 /* Point.swift */; };
 		CCDB823120E0653A007A9635 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCDB823020E0653A007A9635 /* Media.xcassets */; };
 		CCDB823320E0662A007A9635 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CCDB823220E0662A007A9635 /* README.md */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,7 @@
 		CC00E42320D8887B00025A4D /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		CC7FCB5720D9684100843C58 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		CC8F7EC320DDADA60065A61E /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
-		CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazePoint.swift; sourceTree = "<group>"; };
+		CCBE0DE520DC1ED700DA99E5 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		CCDB823020E0653A007A9635 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CCDB823220E0662A007A9635 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,7 +107,7 @@
 				CC8F7EC320DDADA60065A61E /* Direction.swift */,
 				CC7FCB5720D9684100843C58 /* Generator.swift */,
 				CC00E42320D8887B00025A4D /* Maze.swift */,
-				CCBE0DE520DC1ED700DA99E5 /* MazePoint.swift */,
+				CCBE0DE520DC1ED700DA99E5 /* Point.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBE0DE620DC1ED700DA99E5 /* MazePoint.swift in Sources */,
+				CCBE0DE620DC1ED700DA99E5 /* Point.swift in Sources */,
 				CC00E42420D8887B00025A4D /* Maze.swift in Sources */,
 				CC7FCB5820D9684100843C58 /* Generator.swift in Sources */,
 				CC8F7EC420DDADA60065A61E /* Direction.swift in Sources */,

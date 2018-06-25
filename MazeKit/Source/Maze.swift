@@ -28,11 +28,11 @@ public struct Maze {
 	public var rows: Int
 
 	/// The starting point of the maze.
-	public var start: MazePoint
+	public var start: Point
 
 	/// The endpoint of the maze. Nil if the maze
 	/// has not been generated.
-	public var end: MazePoint?
+	public var end: Point?
 
 	/// The total number of spaces in the maze.
 	public var spaces: Int {
@@ -56,7 +56,7 @@ public struct Maze {
 	/// 					 the values passed in are even, they will be incremented.
 	public init(width columns: Int,
 							height rows: Int,
-							start point: MazePoint = MazePoint.zero) {
+							start point: Point = Point.zero) {
 		self.rows = rows % 2 != 0 ? rows : rows + 1
 		self.columns = columns % 2 != 0 ? columns : columns + 1
 		self.start = point
@@ -76,7 +76,7 @@ public struct Maze {
 	/// - Parameters:
 	///   - point: A new starting point. Optional.
 	///   - regenerate: Indicates if the maze should be regenerated. Defaults to false.
-	public mutating func reset(to point: MazePoint? = nil,
+	public mutating func reset(to point: Point? = nil,
 														 regenerate: Bool = false) {
 		generator.reset(to: (point != nil ? point! : start))
 		grid = [[Space]](repeating: [Space](repeating: .impassable, count: columns),
@@ -105,7 +105,7 @@ public struct Maze {
 	/// Get/set subscript used by the Generator class.
 	///
 	/// - Parameter point: Space that can be read/written.
-	internal subscript(point: MazePoint) -> Space {
+	internal subscript(point: Point) -> Space {
 		get {
 			return self[point.row, point.column]
 		}
@@ -127,7 +127,7 @@ public struct Maze {
 	///
 	/// - Parameter point: The point to check.
 	/// - Returns: True if in bounds, false if not.
-	internal func contains(_ point: MazePoint) -> Bool {
+	internal func contains(_ point: Point) -> Bool {
 		let row = point.row
 		let column = point.column
 		return contains(row, column)
@@ -144,7 +144,7 @@ public struct Maze {
 	///   - base: The base point of the construction.
 	///   - direction: The direction to construct in.
 	///   - constructor: Passed `nil` if the construction was invalid.
-	internal func construct(from base: MazePoint,
+	internal func construct(from base: Point,
 													in direction: Direction,
 													_ constructor: (Generator.Construction?) -> ()) {
 		/// The path used in a maze construction.
@@ -170,7 +170,7 @@ public struct Maze {
 		}
 
 		/// Points to either side of `base`
-		var surrounding = [MazePoint]()
+		var surrounding = [Point]()
 		direction.perpendiculars.forEach { direction in
 			surrounding.append(base.offsetting(in: direction, by: 1))
 		}

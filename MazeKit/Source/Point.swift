@@ -1,5 +1,5 @@
 //
-//  MazePoint.swift
+//  Point.swift
 //  MazeKit
 //
 //  Created by Aaron Sutton on 6/21/18.
@@ -7,11 +7,11 @@
 //
 
 /// A structure that represents a point on the maze grid.
-public struct MazePoint: Hashable {
+public struct Point: Hashable {
 
 	/// A point at the top-left corner of any maze.
-	public static var zero: MazePoint {
-		return MazePoint(row: 0, column: 0)
+	public static var zero: Point {
+		return Point(row: 0, column: 0)
 	}
 
 	public var row: Int
@@ -23,16 +23,16 @@ public struct MazePoint: Hashable {
 	///   - direction: The direction to offset in.
 	///   - amount: Number of points to offset by.
 	/// - Returns: The new point.
-	func offsetting(in direction: Direction, by amount: Int) -> MazePoint {
+	func offsetting(in direction: Direction, by amount: Int) -> Point {
 		switch direction {
 		case .N:
-			return MazePoint(row: self.row - amount, column: self.column)
+			return Point(row: self.row - amount, column: self.column)
 		case .S:
-			return MazePoint(row: self.row + amount, column: self.column)
+			return Point(row: self.row + amount, column: self.column)
 		case .E:
-			return MazePoint(row: self.row, column: self.column + amount)
+			return Point(row: self.row, column: self.column + amount)
 		case .W:
-			return MazePoint(row: self.row, column: self.column - amount)
+			return Point(row: self.row, column: self.column - amount)
 		}
 	}
 

@@ -41,6 +41,4 @@ internal enum Direction: CaseIterable {
 		} while directions.contains(result)
 		return result
 	}
-
-	
 }
