@@ -1,0 +1,5 @@
+language: objective-c
+os: osx
+
+install: gem install xcpretty
+script: xcodebuild test -scheme MazeKit -sdk iphonesimulator -destination "name=iPhone 8" | xcpretty -s
