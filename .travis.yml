@@ -4,6 +4,6 @@ osx_image: xcode9.4
 install:
   - curl -O  https://swift.org/builds/swift-4.2-branch/xcode/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a-osx.pkg
   - sudo installer -pkg swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a-osx.pkg -target /
-  - export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+  sr/bin:"${PATH}"
 
 script: xcrun xcodebuild -scheme Unit\ Tests -sdk iphonesimulator test
