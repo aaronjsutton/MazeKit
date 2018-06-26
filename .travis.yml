@@ -6,4 +6,4 @@ install:
   - sudo installer -pkg swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a-osx.pkg -target /
   - export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 
-script: xcrun xcodebuild -scheme Unit\ Tests -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' -sdk iphonesimulator test
+script: xcrun xcodebuild -scheme Unit\ Tests -sdk iphonesimulator test
