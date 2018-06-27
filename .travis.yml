@@ -9,3 +9,4 @@ before_install: xcrun simctl boot iPhone\ X
 install: gem install xcpretty
 
 script: ruby Script/run_tests.rb
+notifications: never
