@@ -12,6 +12,6 @@ install:
   - sudo installer -pkg swift.pkg -tgt /
   - xcrun --toolchain swift swift -version
 
-script: xcodebuild --toolchain swift -scheme MazeKit -destination 'name=iPhone 6' test
+script: xcodebuild -toolchain swift -scheme MazeKit -destination 'name=iPhone 6' test
 notifications: 
   email: never
