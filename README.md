@@ -6,5 +6,26 @@ Generate random mazes using the Depth-First Search algorithm.
 
 # Installation
 
+## Embedded Framework
+
+Follow the steps below to integrate MazeKit into your Xcode project. 
+
+* Open Terminal, `cd` into your project's top level source directory. 
+
+* Add MazeKit as a submodule by running: 
+
+```
+git submodule add https://github.com/aaronjsutton/MazeKit.git
+```
+
+* Inside the newly created `MazeKit` folder, drag or import `MazeKit.xcodeproj` into your project's file navigator. 
+
+* Select the project settings for your main project. Under `Embedded Frameworks and Libraries`, click the `+`, and select MazeKit from the drop down menu. 
+
+* ```swift
+import MazeKit
+```
+And you're ready to go.
+
 # Usage
 
