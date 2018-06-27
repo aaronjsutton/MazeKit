@@ -1,5 +1,11 @@
 language: objective-c
-os: osx
-osx_image: xcode9.3
- 
-script: xcodebuild test -project MazeKit.xcodeproj -scheme Unit\ Tests -destination "platform=iOS Simulator,name=iPhone 7,OS=latest"
+osx_image: xcode9.4
+
+xcode_project: MazeKit.xcodeproj
+xcode_scheme: MazeKit
+xcode_sdk: iphonesimulator11.4
+
+before_install: xcrun simctl boot iPhone\ X
+install: gem install xcpretty
+
+script: Script/run_tests.rb
