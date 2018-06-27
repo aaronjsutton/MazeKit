@@ -16,6 +16,7 @@
 		CCBE0DE620DC1ED700DA99E5 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE0DE520DC1ED700DA99E5 /* Point.swift */; };
 		CCDB823120E0653A007A9635 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCDB823020E0653A007A9635 /* Media.xcassets */; };
 		CCDB823320E0662A007A9635 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CCDB823220E0662A007A9635 /* README.md */; };
+		CCDB823520E3E1DC007A9635 /* Script in Resources */ = {isa = PBXBuildFile; fileRef = CCDB823420E3E1DB007A9635 /* Script */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,7 @@
 		CC00E40920D8884500025A4D /* MazeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MazeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC00E40C20D8884500025A4D /* MazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeKit.h; sourceTree = "<group>"; };
 		CC00E40D20D8884500025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC00E41220D8884600025A4D /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC00E41220D8884600025A4D /* MazeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC00E41720D8884600025A4D /* MazeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeKitTests.swift; sourceTree = "<group>"; };
 		CC00E41920D8884600025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC00E42320D8887B00025A4D /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
@@ -41,6 +42,7 @@
 		CCBE0DE520DC1ED700DA99E5 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		CCDB823020E0653A007A9635 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CCDB823220E0662A007A9635 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CCDB823420E3E1DB007A9635 /* Script */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Script; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,8 @@
 			children = (
 				CCDB823220E0662A007A9635 /* README.md */,
 				CC00E40B20D8884500025A4D /* MazeKit */,
-				CC00E41620D8884600025A4D /* Unit Tests */,
+				CC00E41620D8884600025A4D /* MazeKitTests */,
+				CCDB823420E3E1DB007A9635 /* Script */,
 				CC00E40A20D8884500025A4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				CC00E40920D8884500025A4D /* MazeKit.framework */,
-				CC00E41220D8884600025A4D /* Unit Tests.xctest */,
+				CC00E41220D8884600025A4D /* MazeKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,13 +95,13 @@
 			path = MazeKit;
 			sourceTree = "<group>";
 		};
-		CC00E41620D8884600025A4D /* Unit Tests */ = {
+		CC00E41620D8884600025A4D /* MazeKitTests */ = {
 			isa = PBXGroup;
 			children = (
 				CC00E41720D8884600025A4D /* MazeKitTests.swift */,
 				CC00E41920D8884600025A4D /* Info.plist */,
 			);
-			path = "Unit Tests";
+			path = MazeKitTests;
 			sourceTree = "<group>";
 		};
 		CC8F7EC520DDADDA0065A61E /* Source */ = {
@@ -145,9 +148,9 @@
 			productReference = CC00E40920D8884500025A4D /* MazeKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CC00E41120D8884600025A4D /* Unit Tests */ = {
+		CC00E41120D8884600025A4D /* MazeKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "Unit Tests" */;
+			buildConfigurationList = CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "MazeKitTests" */;
 			buildPhases = (
 				CC00E40E20D8884600025A4D /* Sources */,
 				CC00E40F20D8884600025A4D /* Frameworks */,
@@ -158,9 +161,9 @@
 			dependencies = (
 				CC00E41520D8884600025A4D /* PBXTargetDependency */,
 			);
-			name = "Unit Tests";
+			name = MazeKitTests;
 			productName = DFSKitTests;
-			productReference = CC00E41220D8884600025A4D /* Unit Tests.xctest */;
+			productReference = CC00E41220D8884600025A4D /* MazeKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -195,7 +198,7 @@
 			projectRoot = "";
 			targets = (
 				CC00E40820D8884500025A4D /* MazeKit */,
-				CC00E41120D8884600025A4D /* Unit Tests */,
+				CC00E41120D8884600025A4D /* MazeKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -206,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCDB823320E0662A007A9635 /* README.md in Resources */,
+				CCDB823520E3E1DC007A9635 /* Script in Resources */,
 				CCDB823120E0653A007A9635 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +453,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = "Unit Tests/Info.plist";
+				INFOPLIST_FILE = MazeKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,7 +472,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = "Unit Tests/Info.plist";
+				INFOPLIST_FILE = MazeKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
+		CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "MazeKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC00E42120D8884600025A4D /* Debug */,
