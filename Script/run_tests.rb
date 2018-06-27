@@ -3,5 +3,5 @@
 scheme = 'MazeKit'
 destination_name = 'iPhone 6'
 
-command = "set -o pipefail && xcodebuild -toolchain swift -scheme #{scheme} -destination 'name=#{destination_name}' test | xcpretty"
+command = "set -o pipefail && xcrun --toolchain swift xcodebuild -toolchain swift -scheme #{scheme} -destination 'name=#{destination_name}' test | xcpretty"
 exec command
