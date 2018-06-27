@@ -32,7 +32,7 @@
 		CC00E40920D8884500025A4D /* MazeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MazeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC00E40C20D8884500025A4D /* MazeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeKit.h; sourceTree = "<group>"; };
 		CC00E40D20D8884500025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC00E41220D8884600025A4D /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC00E41220D8884600025A4D /* MazeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC00E41720D8884600025A4D /* MazeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeKitTests.swift; sourceTree = "<group>"; };
 		CC00E41920D8884600025A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC00E42320D8887B00025A4D /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			children = (
 				CCDB823220E0662A007A9635 /* README.md */,
 				CC00E40B20D8884500025A4D /* MazeKit */,
-				CC00E41620D8884600025A4D /* Unit Tests */,
+				CC00E41620D8884600025A4D /* MazeKitTests */,
 				CC00E40A20D8884500025A4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				CC00E40920D8884500025A4D /* MazeKit.framework */,
-				CC00E41220D8884600025A4D /* Unit Tests.xctest */,
+				CC00E41220D8884600025A4D /* MazeKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,13 +92,13 @@
 			path = MazeKit;
 			sourceTree = "<group>";
 		};
-		CC00E41620D8884600025A4D /* Unit Tests */ = {
+		CC00E41620D8884600025A4D /* MazeKitTests */ = {
 			isa = PBXGroup;
 			children = (
 				CC00E41720D8884600025A4D /* MazeKitTests.swift */,
 				CC00E41920D8884600025A4D /* Info.plist */,
 			);
-			path = "Unit Tests";
+			path = MazeKitTests;
 			sourceTree = "<group>";
 		};
 		CC8F7EC520DDADDA0065A61E /* Source */ = {
@@ -145,9 +145,9 @@
 			productReference = CC00E40920D8884500025A4D /* MazeKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CC00E41120D8884600025A4D /* Unit Tests */ = {
+		CC00E41120D8884600025A4D /* MazeKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "Unit Tests" */;
+			buildConfigurationList = CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "MazeKitTests" */;
 			buildPhases = (
 				CC00E40E20D8884600025A4D /* Sources */,
 				CC00E40F20D8884600025A4D /* Frameworks */,
@@ -158,9 +158,9 @@
 			dependencies = (
 				CC00E41520D8884600025A4D /* PBXTargetDependency */,
 			);
-			name = "Unit Tests";
+			name = MazeKitTests;
 			productName = DFSKitTests;
-			productReference = CC00E41220D8884600025A4D /* Unit Tests.xctest */;
+			productReference = CC00E41220D8884600025A4D /* MazeKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -195,7 +195,7 @@
 			projectRoot = "";
 			targets = (
 				CC00E40820D8884500025A4D /* MazeKit */,
-				CC00E41120D8884600025A4D /* Unit Tests */,
+				CC00E41120D8884600025A4D /* MazeKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -449,13 +449,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = "Unit Tests/Info.plist";
+				INFOPLIST_FILE = MazeKitTests;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.DFSKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.MazeKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -468,13 +468,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = "Unit Tests/Info.plist";
+				INFOPLIST_FILE = MazeKitTests;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.DFSKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronjsutton.MazeKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -502,7 +502,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
+		CC00E42020D8884600025A4D /* Build configuration list for PBXNativeTarget "MazeKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC00E42120D8884600025A4D /* Debug */,
