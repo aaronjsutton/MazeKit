@@ -10,7 +10,8 @@ install:
   - gem install xcpretty
   - curl $SWIFT_DOWNLOAD -o swift.pkg
   - sudo installer -pkg swift.pkg -tgt /
-  - export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+  - xcrun --toolchain swift swift -version
 
-script: xcodebuild -scheme MazeKit -destination 'name=iPhone 6' test
-notifications: never
+script: xcodebuild --toolchain swift -scheme MazeKit -destination 'name=iPhone 6' test
+notifications: 
+  email: never
