@@ -32,7 +32,7 @@ And you're ready to go.
 
 # Usage
 
-Read the [quick start guide]() or the full [documentation]() for details.
+Read the [quick start guide](https://docs.aaronjsutton.com/mazekit/quick-start.html) or the full [documentation](https://docs.aaronjsutton.com/mazekit) for details.
 
 
 
