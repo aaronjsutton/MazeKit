@@ -1,8 +1,16 @@
 ![MazeKit](https://raw.githubusercontent.com/aaronjsutton/MazeKit/travis/MazeKit/Media.xcassets/Text.imageset/Text%402x.png?token=AKeWfwaL09Hk84pu8UXTSWD1f8Z3dt_Tks5bOWxiwA%3D%3D)
 
+![Swift 4.2](https://img.shields.io/badge/swift-4.2-orange.svg)
+![iOS 12.0](https://img.shields.io/badge/ios-12.0-lightgrey.svg)
+
 Generate random mazes using the Depth-First Search algorithm. 
 
 # Installation
+
+## Compatibility
+
+MazeKit is written using the Swift Standard Library&mdash; it does however, depend on **Swift 4.2** which is only
+availble in Xcode 10 or higher.  
 
 ## Embedded Framework
 

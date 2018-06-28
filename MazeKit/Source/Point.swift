@@ -14,7 +14,9 @@ public struct Point: Hashable {
 		return Point(row: 0, column: 0)
 	}
 
+	/// The row (X-value) of the point.
 	public var row: Int
+	/// The column (Y-value) of the point.
 	public var column: Int
 
 	/// Returns a point offset from this point.

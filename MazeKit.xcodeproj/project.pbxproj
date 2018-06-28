@@ -41,6 +41,7 @@
 		CCBE0DE520DC1ED700DA99E5 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		CCDB823020E0653A007A9635 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		CCDB823220E0662A007A9635 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CCFD98CD20E5251600A90B65 /* Quick Start.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Quick Start.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				CCDB823220E0662A007A9635 /* README.md */,
+				CCFD98CE20E5265400A90B65 /* Guides */,
 				CC00E40B20D8884500025A4D /* MazeKit */,
 				CC00E41620D8884600025A4D /* MazeKitTests */,
 				CC00E40A20D8884500025A4D /* Products */,
@@ -110,6 +112,14 @@
 				CCBE0DE520DC1ED700DA99E5 /* Point.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		CCFD98CE20E5265400A90B65 /* Guides */ = {
+			isa = PBXGroup;
+			children = (
+				CCFD98CD20E5251600A90B65 /* Quick Start.md */,
+			);
+			path = Guides;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +459,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = MazeKitTests;
+				INFOPLIST_FILE = MazeKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,7 +478,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79S8R8WVLX;
-				INFOPLIST_FILE = MazeKitTests;
+				INFOPLIST_FILE = MazeKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

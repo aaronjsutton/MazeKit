@@ -55,11 +55,8 @@ class MazeKitTests: XCTestCase {
 		maze.reset(regenerate: true)
 		print(maze)
 
-		maze = Maze(width: 10, height: 25)
-		maze.reset()
-		maze.generate()
-		print(maze)
-
+		let letMaze = Maze(width: 10, height: 25)
+		print(letMaze.generated())
 	}
 
 	func testGenerationPerformance() {
