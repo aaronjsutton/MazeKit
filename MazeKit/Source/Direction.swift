@@ -12,11 +12,16 @@
 /// - E: East
 /// - S: South
 /// - W: West
-internal enum Direction: CaseIterable {
+internal enum Direction {
 	case N
 	case E
 	case S
 	case W
+
+	/// An array of every case.
+	public static var cases: [Direction] {
+		return [.N, .E, .S, .W]
+	}
 
 	/// Returns the directions that are perpendicular to a given direction.
 	///
@@ -31,13 +36,13 @@ internal enum Direction: CaseIterable {
 	/// - Parameter directions: Exclude this set from the directions.
 	/// - Returns: Returns nil if a random direction cannot be generated.
 	static func random(exclude directions: Set<Direction>) -> Direction? {
-		guard directions.isStrictSubset(of: Direction.allCases) else {
+		guard directions.isStrictSubset(of: Direction.cases) else {
 			return nil
 		}
 		var result: Direction
 		repeat {
-			// Force unwrap because we know allCases will never be empty.
-			result = Direction.allCases.randomElement()!
+			let index = Int(arc4random_uniform(4))
+			result = Direction.cases[index]
 		} while directions.contains(result)
 		return result
 	}

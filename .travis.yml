@@ -5,13 +5,10 @@ xcode_project: MazeKit.xcodeproj
 xcode_scheme: MazeKit
 xcode_sdk: iphonesimulator11.4
 
-before_install: xcrun simctl boot iPhone\ X
+before_install: xcrun simctl boot iPhone\ 6
 install: 
   - gem install xcpretty
-  - curl $SWIFT_DOWNLOAD -o swift.pkg
-  - sudo installer -pkg swift.pkg -tgt /
-  - xcrun --toolchain swift swift -version
 
-script: xcodebuild -toolchain swift -scheme MazeKit -destination 'name=iPhone 6' test
+script: set -o pipefail && xcodebuild scheme MazeKit -destination 'name=iPhone 6' test | xcpretty
 notifications: 
   email: never
