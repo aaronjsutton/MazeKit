@@ -9,6 +9,6 @@ before_install: xcrun simctl boot iPhone\ 6
 install: 
   - gem install xcpretty
 
-script: set -o pipefail && xcodebuild scheme MazeKit -destination 'name=iPhone 6' test | xcpretty
+script: set -o pipefail && xcodebuild -scheme MazeKit -destination 'name=iPhone 6' test | xcpretty
 notifications: 
   email: never
